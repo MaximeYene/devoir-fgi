@@ -1,9 +1,14 @@
-import * as React from "react"
+import * as React from "react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
+// Exemple d'interface Input modifiée
+export interface InputProps {
+  type?: string; // Par exemple, vous pouvez définir les types possibles
+  accept?: string; // Acceptation des types de fichiers
+  className?: string; // Pour le style
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void; // Pour gérer le changement de fichier
+}
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
@@ -17,9 +22,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-Input.displayName = "Input"
+);
+Input.displayName = "Input";
 
-export { Input }
+export { Input };
