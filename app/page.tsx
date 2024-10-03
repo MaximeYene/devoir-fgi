@@ -11,7 +11,10 @@ import {
   Search,
   AudioLines,
   ImageIcon,
-  VideoIcon
+  VideoIcon,
+  FileIcon,
+  TextIcon,
+  RecycleIcon
 } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
@@ -23,6 +26,9 @@ import HomeDashboard from "@/components/HomeDashboard";
 import { ImagesComponent } from "@/components/ImagesComponent";
 import { AudioComponent } from "@/components/AudioComponent";
 import { VideoComponent } from "@/components/VideoComponent";
+import { PdfComponent } from "@/components/PdfComponent";
+import { TextComponent } from "@/components/TextComponent";
+import CorbeilleComponent from "@/components/CorbeilleComponent";
 
 export default function Dashboard() {
   const router = useRouter();
@@ -38,6 +44,12 @@ export default function Dashboard() {
         return <AudioComponent />;
       case "Videos":
         return <VideoComponent />;
+        case "Pdf":
+          return <PdfComponent/>;
+        case "Text":
+          return <TextComponent/>;
+        case "Corbeille":
+          return <CorbeilleComponent/>;
     }
   };
 
@@ -109,6 +121,45 @@ export default function Dashboard() {
                 <VideoIcon className="h-4 w-4" />
                 Videos
               </button>
+              <button
+                onClick={() => {
+                  setSelectedSection("Pdf");
+                }}
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary ${
+                  selectedSection === "Pdf"
+                    ? "bg-muted text-primary"
+                    : "text-muted-foreground"
+                }`}
+              >
+                <FileIcon className="h-4 w-4" />
+                Pdf Documents
+              </button>
+              <button
+                onClick={() => {
+                  setSelectedSection("Text");
+                }}
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary ${
+                  selectedSection === "Text"
+                    ? "bg-muted text-primary"
+                    : "text-muted-foreground"
+                }`}
+              >
+                <TextIcon className="h-4 w-4" />
+                Text Files
+              </button>
+              <button
+                onClick={() => {
+                  setSelectedSection("Corbeille");
+                }}
+                className={`flex items-center gap-3 rounded-lg px-3 py-2 transition-all hover:text-primary ${
+                  selectedSection === "Corbeille"
+                    ? "bg-muted text-primary"
+                    : "text-muted-foreground"
+                }`}
+              >
+                <RecycleIcon className="h-4 w-4" />
+                Recycle Bin
+              </button>
             </nav>
           </div>
         </div>
@@ -162,6 +213,27 @@ export default function Dashboard() {
                 >
                   <VideoIcon className="h-5 w-5" />
                   Videos
+                </button>
+                <button
+                  onClick={() => setSelectedSection("Pdf")}
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <FileIcon className="h-5 w-5" />
+                  Pdf Documents
+                </button>
+                <button
+                  onClick={() => setSelectedSection("Text")}
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <TextIcon className="h-5 w-5" />
+                  Text Files
+                </button>
+                <button
+                  onClick={() => setSelectedSection("Corbeille")}
+                  className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-muted-foreground hover:text-foreground"
+                >
+                  <RecycleIcon className="h-5 w-5" />
+                  Recycle Bin
                 </button>
               </nav>
             </SheetContent>
